@@ -1,0 +1,15 @@
+{
+  "setting": {
+    "newFeature": true,
+    "urlCheck": true,
+    "es6": false,
+    "postcss": true,
+    "minified": false,
+    "checkSiteMap": false,
+    "autoAudits": false
+  },
+  "appid": "wxe960a1d8ed0a9ed6",
+  "projectname": "wx-mini-sign",
+  "description": "预约小程序",
+  "condition": {}
+}
