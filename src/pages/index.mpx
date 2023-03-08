@@ -1,13 +1,73 @@
 <template>
-  <list></list>
+  <view class="container">
+    <view class="user-box">
+      <view>{{name}}</view>
+      <view>剩余点数 {{num}}</view>
+    </view>
+    <van-calendar
+      poppable="{{ false }}"
+      show-confirm="{{ false }}"
+      show="{{ true }}"
+      min-date="{{ minDate }}"
+      max-date="{{ maxDate }}"
+      bind:confirm="onConfirm" />
+      <view class="day-box" wx:if="{{true}}">
+        <image class="empty-image" src="https://img.yzcdn.cn/vant/empty-image-default.png"></image>
+        <view class="info">当日暂无</view>
+      </view>
+      <view class="day-box" wx:else>
+
+      </view>
+      <van-action-sheet
+        show="{{ sheetShow }}"
+        actions="{{ actions }}"
+        bind:close="onClose"
+        bind:select="onSelect"
+      />
+  </view>
 </template>
 
 <script>
 import { createPage } from '@mpxjs/core'
 
 createPage({
+  data: {
+    name: '管理员',
+    num: 10,
+    minDate: new Date().getTime(),
+    maxDate: new Date().getTime() + 30 * 24 * 360000,
+    sheetShow: false,
+    actions: [{ name: '呼叫' }]
+  },
+  methods: {
+    onConfirm(e) { 
+      console.log(e.detail)
+      if (true) { // 当前日期下没有记录弹出新增
+        this.sheetShow = true
+        wx.hideTabBar()
+      }
+    },
+    onSelect(event) {
+      console.log(event.detail);
+      wx.navigateTo({url: './records'})
+      this.sheetShow = false
+      this._showTabBar()
+    },
+    onClose() {
+      this.sheetShow = false
+      this._showTabBar()
+    },
+    _showTabBar() {
+      setTimeout(function () {
+        wx.showTabBar()
+      }, 500)
+    }
+  },
   onLoad() {
-    //
+    // const notToday = new Date().getHours() > 20 // 超过21点啦
+    // const time = new Date().getTime()
+    // if (notToday) {
+    // }
   }
 })
 </script>
@@ -15,7 +75,38 @@ createPage({
 <script type="application/json">
   {
     "usingComponents": {
-      "list": "../components/list"
+      "van-calendar": "@vant/weapp/calendar/index",
+      "van-empty": "@vant/weapp/empty/index",
+      "van-action-sheet": "@vant/weapp/action-sheet/index"
     }
   }
 </script>
+
+<style scoped>
+.container{
+  background-color: #f8f8f8;
+}
+.user-box{
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #555;
+}
+.day-box{
+  height: 280rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.empty-image{
+  width: 160rpx;
+  height: 160rpx;
+}
+.info{
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+</style>

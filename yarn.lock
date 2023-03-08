@@ -1491,6 +1491,11 @@
   dependencies:
     "@types/node" "*"
 
+"@vant/weapp@^1.10.14":
+  version "1.10.14"
+  resolved "https://registry.yarnpkg.com/@vant/weapp/-/weapp-1.10.14.tgz#b5f249097df1f1a7aa5c6602d8cad4afd397f934"
+  integrity sha512-5usuhoN1kiOV6pzrdVzHrAux6DupKlGd9w+yYc992Zy1n1wHLZMb1dGM3+xtbNE3tpWE2qv95vIFSMpJRFyE7Q==
+
 "@vue/cli-overlay@^5.0.8":
   version "5.0.8"
   resolved "https://registry.npmmirror.com/@vue/cli-overlay/-/cli-overlay-5.0.8.tgz#b61477acdc43bbd42fce6326d228471201ecdcdd"

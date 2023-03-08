@@ -14,6 +14,7 @@
     "@mpxjs/pinia": "^2.8.0",
     "@mpxjs/store": "^2.8.0",
     "@mpxjs/utils": "^2.8.0",
+    "@vant/weapp": "^1.10.14",
     "pinia": "^2.0.14",
     "vue": "^2.6.14"
   },
